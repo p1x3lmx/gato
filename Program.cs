@@ -6,13 +6,13 @@ namespace tictactoe
 {
     class Program
     {
-        static string [,] main = new string[3, 3]
+        static string[,] main = new string[3, 3]
         {
             {"1", "2", "3"},
             {"4", "5", "6"},
             {"7", "8", "9"}
         };
-        
+
         static void Main(string[] args)
         {
             string input;
@@ -23,7 +23,6 @@ namespace tictactoe
             bool letsPlay = true;
             bool gameIsOver = false;
             string xOrO = "X";
-
             string pos1 = main[0, 0];
             string pos2 = main[0, 1];
             string pos3 = main[0, 2];
@@ -34,28 +33,28 @@ namespace tictactoe
             string pos8 = main[2, 1];
             string pos9 = main[2, 2];
 
-            bool ValidInt(string userInput)
+            bool ValidInt (string userInput)
             {
                 validNum = int.TryParse(userInput, out userSelection);
                 if (userSelection > 0 && userSelection < 10 && validNum) return true;
                 else return false;
             }
 
-            void changePlayer()
+            void ChangePlayer()
             {
-                if (turn == 1) 
+                if (turn == 1)
                 {
                     turn = 2;
                     xOrO = "X";
                 }
-                else 
+                else
                 {
                     turn = 1;
                     xOrO = "O";
                 }
             }
 
-            void increaseStep()
+            void IncreaseStep()
             {
                 step++;
             }
@@ -64,14 +63,14 @@ namespace tictactoe
             {
                 if (player == 1)
                 {
-                    displayBoard();
+                    DisplayBoard();
                     System.Console.WriteLine("Player 1 (O) Wins");
                     gameIsOver = true;
                     ResetGame();
                 }
                 else
                 {
-                    displayBoard();
+                    DisplayBoard();
                     System.Console.WriteLine("Player 2 (X) Wins");
                     gameIsOver = true;
                     ResetGame();
@@ -94,22 +93,21 @@ namespace tictactoe
                 pos8 = "8";
                 pos9 = "9";
                 step = 0;
-                displayBoard();
-
+                DisplayBoard();
             }
 
-            void CheckTie ()
+            void CheckTie()
             {
                 if (step > 8)
                 {
-                    displayBoard();
+                    DisplayBoard();
                     System.Console.WriteLine("No winner this time it's a tie press any key to continue");
                     ResetGame();
                     System.Console.WriteLine();
                 }
             }
 
-            void checkWinPlayer1(int pos)
+            void CheckWinPlayer1(int pos)
             {
                 switch (pos)
                 {
@@ -151,7 +149,7 @@ namespace tictactoe
                 }
             }
 
-            void checkWinPlayer2(int pos)
+            void CheckWinPlayer2(int pos)
             {
                 switch (pos)
                 {
@@ -193,42 +191,32 @@ namespace tictactoe
                 }
             }
 
-            void displayBoard()
-            {
-                Console.Clear();
-                System.Console.WriteLine(" {0} | {1} | {2}", pos1, pos2, pos3);
-                System.Console.WriteLine("---|---|---");
-                System.Console.WriteLine(" {0} | {1} | {2}", pos4, pos5, pos6);
-                System.Console.WriteLine("---|---|---");
-                System.Console.WriteLine(" {0} | {1} | {2}", pos7, pos8, pos9);
-            }
-
             while (letsPlay)
             {
-                displayBoard();
+                DisplayBoard();
                 CheckTie();
                 System.Console.WriteLine("Player {0} your turn {1}", turn, xOrO);
                 input = Console.ReadLine();
-                
+
                 if (ValidInt(input) && !gameIsOver && step < 9)
                 {
-                    
+
                     switch (userSelection)
                     {
                         case 1:
                             if (turn == 1 && pos1 != "O" && pos1 != "X")
                             {
                                 pos1 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos1 != "O" && pos1 != "X")
                             {
                                 pos1 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -241,16 +229,16 @@ namespace tictactoe
                             if (turn == 1 && pos2 != "O" && pos2 != "X")
                             {
                                 pos2 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos2 != "O" && pos2 != "X")
                             {
                                 pos2 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -263,16 +251,16 @@ namespace tictactoe
                             if (turn == 1 && pos3 != "O" && pos3 != "X")
                             {
                                 pos3 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos3 != "O" && pos3 != "X")
                             {
                                 pos3 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -285,16 +273,16 @@ namespace tictactoe
                             if (turn == 1 && pos4 != "O" && pos4 != "X")
                             {
                                 pos4 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos4 != "O" && pos4 != "X")
                             {
                                 pos4 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -307,16 +295,16 @@ namespace tictactoe
                             if (turn == 1 && pos5 != "O" && pos5 != "X")
                             {
                                 pos5 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos5 != "O" && pos5 != "X")
                             {
                                 pos5 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -329,16 +317,16 @@ namespace tictactoe
                             if (turn == 1 && pos6 != "O" && pos6 != "X")
                             {
                                 pos6 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos6 != "O" && pos6 != "X")
                             {
                                 pos6 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -351,16 +339,16 @@ namespace tictactoe
                             if (turn == 1 && pos7 != "O" && pos7 != "X")
                             {
                                 pos7 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos7 != "O" && pos7 != "X")
                             {
                                 pos7 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -373,16 +361,16 @@ namespace tictactoe
                             if (turn == 1 && pos8 != "O" && pos8 != "X")
                             {
                                 pos8 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos8 != "O" && pos8 != "X")
                             {
                                 pos8 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -395,16 +383,16 @@ namespace tictactoe
                             if (turn == 1 && pos9 != "O" && pos9 != "X")
                             {
                                 pos9 = "O";
-                                changePlayer();
-                                checkWinPlayer1(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer1(userSelection);
+                                IncreaseStep();
                             }
                             else if (turn == 2 && pos9 != "O" && pos9 != "X")
                             {
                                 pos9 = "X";
-                                changePlayer();
-                                checkWinPlayer2(userSelection);
-                                increaseStep();
+                                ChangePlayer();
+                                CheckWinPlayer2(userSelection);
+                                IncreaseStep();
                             }
                             else
                             {
@@ -417,19 +405,17 @@ namespace tictactoe
 
                 else if (step >= 9)
                 {
-                CheckTie();
+                    CheckTie();
                 }
 
                 else
                 {
                     System.Console.WriteLine("Your input was not valid please try again");
-                    Console.ReadLine();
+                    Console.ReadKey();
                 }
             }
 
         }
-    
-
         public static void setFields()
         {
 
