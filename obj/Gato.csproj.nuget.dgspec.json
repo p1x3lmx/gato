@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/Users/p1x3l/Documents/iOS Dev/c# course/Section 7/Gato/Gato.csproj": {}
+    "C:\\Users\\francisco_medina\\Documents\\C#\\gato\\Gato.csproj": {}
   },
   "projects": {
-    "/Users/p1x3l/Documents/iOS Dev/c# course/Section 7/Gato/Gato.csproj": {
+    "C:\\Users\\francisco_medina\\Documents\\C#\\gato\\Gato.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/p1x3l/Documents/iOS Dev/c# course/Section 7/Gato/Gato.csproj",
+        "projectUniqueName": "C:\\Users\\francisco_medina\\Documents\\C#\\gato\\Gato.csproj",
         "projectName": "Gato",
-        "projectPath": "/Users/p1x3l/Documents/iOS Dev/c# course/Section 7/Gato/Gato.csproj",
-        "packagesPath": "/Users/p1x3l/.nuget/packages/",
-        "outputPath": "/Users/p1x3l/Documents/iOS Dev/c# course/Section 7/Gato/obj/",
+        "projectPath": "C:\\Users\\francisco_medina\\Documents\\C#\\gato\\Gato.csproj",
+        "packagesPath": "C:\\Users\\francisco_medina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\francisco_medina\\Documents\\C#\\gato\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/p1x3l/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\francisco_medina\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

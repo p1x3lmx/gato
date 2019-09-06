@@ -59,9 +59,9 @@ namespace tictactoe
                 step++;
             }
 
-            void DisplayWinner(int player)
+            void DisplayWinner(string player)
             {
-                if (player == 1)
+                if (player == "O")
                 {
                     DisplayBoard();
                     System.Console.WriteLine("Player 1 (O) Wins");
@@ -106,90 +106,25 @@ namespace tictactoe
                     System.Console.WriteLine();
                 }
             }
-
-            void CheckWinPlayer1(int pos)
+            #region // Check winner using foreach
+            void CheckWinner()
             {
-                switch (pos)
+                string[] selected= { "X", "O"};
+
+                foreach (string x in selected)
                 {
-                    case 1:
-                        if (pos2 == "O" && pos3 == "O" || pos5 == "O" && pos9 == "O" || pos4 == "O" && pos7 == "O") DisplayWinner(1);
-                        break;
-
-                    case 2:
-                        if (pos1 == "O" && pos3 == "O" || pos5 == "O" && pos8 == "O") DisplayWinner(1);
-                        break;
-
-                    case 3:
-                        if (pos1 == "O" && pos2 == "O" || pos5 == "O" && pos7 == "O" || pos6 == "O" && pos9 == "O") DisplayWinner(1);
-                        break;
-
-                    case 4:
-                        if (pos1 == "O" && pos7 == "O" || pos5 == "O" && pos6 == "O") DisplayWinner(1);
-                        break;
-
-                    case 5:
-                        if (pos4 == "O" && pos6 == "O" || pos1 == "O" && pos9 == "O" || pos3 == "O" && pos7 == "O" || pos2 == "O" && pos8 == "O") DisplayWinner(1);
-                        break;
-
-                    case 6:
-                        if (pos3 == "O" && pos9 == "O" || pos4 == "O" && pos5 == "O") DisplayWinner(1);
-                        break;
-
-                    case 7:
-                        if (pos1 == "O" && pos4 == "O" || pos3 == "O" && pos5 == "O" || pos8 == "O" && pos9 == "O") DisplayWinner(1);
-                        break;
-
-                    case 8:
-                        if (pos2 == "O" && pos5 == "O" || pos7 == "O" && pos9 == "O") DisplayWinner(1);
-                        break;
-
-                    case 9:
-                        if (pos1 == "O" && pos5 == "O" || pos3 == "O" && pos6 == "O" || pos7 == "O" && pos8 == "O") DisplayWinner(1);
-                        break;
-                }
+                    if ( pos1 == x && pos2 == x && pos3 == x
+                        || pos4 == x && pos5 == x && pos6 == x
+                        || pos7 == x && pos8 == x && pos9 == x
+                        || pos1 == x && pos4 == x && pos7 == x
+                        || pos2 == x && pos5 == x && pos8 == x
+                        || pos3 == x && pos6 == x && pos9 == x
+                        || pos1 == x && pos5 == x && pos9 == x
+                        || pos3 == x && pos5 == x && pos7 == x)
+                        DisplayWinner(x);
+                }               
             }
-
-            void CheckWinPlayer2(int pos)
-            {
-                switch (pos)
-                {
-                    case 1:
-                        if (pos2 == "X" && pos3 == "X" || pos5 == "X" && pos9 == "X" || pos4 == "X" && pos7 == "X") DisplayWinner(2);
-                        break;
-
-                    case 2:
-                        if (pos1 == "X" && pos3 == "X" || pos5 == "X" && pos8 == "X") DisplayWinner(2);
-                        break;
-
-                    case 3:
-                        if (pos1 == "X" && pos2 == "X" || pos5 == "X" && pos7 == "X" || pos6 == "X" && pos9 == "X") DisplayWinner(2);
-                        break;
-
-                    case 4:
-                        if (pos1 == "X" && pos7 == "X" || pos5 == "X" && pos6 == "X") DisplayWinner(2);
-                        break;
-
-                    case 5:
-                        if (pos4 == "X" && pos6 == "X" || pos1 == "X" && pos9 == "X" || pos3 == "X" && pos7 == "X" || pos2 == "X" && pos8 == "X") DisplayWinner(2);
-                        break;
-
-                    case 6:
-                        if (pos3 == "X" && pos9 == "X" || pos4 == "X" && pos5 == "X") DisplayWinner(2);
-                        break;
-
-                    case 7:
-                        if (pos1 == "X" && pos4 == "X" || pos3 == "X" && pos5 == "X" || pos8 == "X" && pos9 == "X") DisplayWinner(2);
-                        break;
-
-                    case 8:
-                        if (pos2 == "X" && pos5 == "X" || pos7 == "X" && pos9 == "X") DisplayWinner(2);
-                        break;
-
-                    case 9:
-                        if (pos1 == "X" && pos5 == "X" || pos3 == "X" && pos6 == "X" || pos7 == "X" && pos8 == "X") DisplayWinner(2);
-                        break;
-                }
-            }
+            #endregion
 
             void DisplayBoard()
             {
@@ -218,14 +153,14 @@ namespace tictactoe
                             {
                                 pos1 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos1 != "O" && pos1 != "X")
                             {
                                 pos1 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -240,14 +175,14 @@ namespace tictactoe
                             {
                                 pos2 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos2 != "O" && pos2 != "X")
                             {
                                 pos2 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -262,14 +197,14 @@ namespace tictactoe
                             {
                                 pos3 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos3 != "O" && pos3 != "X")
                             {
                                 pos3 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -284,14 +219,14 @@ namespace tictactoe
                             {
                                 pos4 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos4 != "O" && pos4 != "X")
                             {
                                 pos4 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -306,14 +241,14 @@ namespace tictactoe
                             {
                                 pos5 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos5 != "O" && pos5 != "X")
                             {
                                 pos5 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -328,14 +263,14 @@ namespace tictactoe
                             {
                                 pos6 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos6 != "O" && pos6 != "X")
                             {
                                 pos6 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -350,14 +285,14 @@ namespace tictactoe
                             {
                                 pos7 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos7 != "O" && pos7 != "X")
                             {
                                 pos7 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -372,14 +307,14 @@ namespace tictactoe
                             {
                                 pos8 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos8 != "O" && pos8 != "X")
                             {
                                 pos8 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -394,14 +329,14 @@ namespace tictactoe
                             {
                                 pos9 = "O";
                                 ChangePlayer();
-                                CheckWinPlayer1(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else if (turn == 2 && pos9 != "O" && pos9 != "X")
                             {
                                 pos9 = "X";
                                 ChangePlayer();
-                                CheckWinPlayer2(userSelection);
+                                CheckWinner();
                                 IncreaseStep();
                             }
                             else
@@ -426,9 +361,7 @@ namespace tictactoe
             }
 
         }
-        public static void setFields()
-        {
+    
 
-        }
     }
 }
