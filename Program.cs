@@ -191,6 +191,16 @@ namespace tictactoe
                 }
             }
 
+            void DisplayBoard()
+            {
+                Console.Clear();
+                System.Console.WriteLine(" {0} | {1} | {2}", pos1, pos2, pos3);
+                System.Console.WriteLine("---|---|---");
+                System.Console.WriteLine(" {0} | {1} | {2}", pos4, pos5, pos6);
+                System.Console.WriteLine("---|---|---");
+                System.Console.WriteLine(" {0} | {1} | {2}", pos7, pos8, pos9);
+            }
+
             while (letsPlay)
             {
                 DisplayBoard();
